@@ -235,10 +235,10 @@ Let's now examine the outputs of the 3 `tcpdump` commands we started earlier.
 docker exec -it router2 tcpdump -i eth0 -n -e -s 0
 tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
 listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
-07:24:11.960013 02:0a:4c:e0:22:54 > 46:8c:45:a8:c3:4e, ethertype IPv4 (0x0800), length 70: 192.168.2.101.35928 > 1.1.1.1.53: 28232+ A? google.com. (28)
-07:24:11.967537 46:8c:45:a8:c3:4e > 02:0a:4c:e0:22:54, ethertype IPv4 (0x0800), length 86: 1.1.1.1.53 > 192.168.2.101.35928: 28232 1/0/0 A 142.250.203.206 (44)
-07:24:11.967912 02:0a:4c:e0:22:54 > 46:8c:45:a8:c3:4e, ethertype IPv4 (0x0800), length 98: 192.168.2.101 > 142.250.203.206: ICMP echo request, id 21, seq 0, length 64
-07:24:11.993035 46:8c:45:a8:c3:4e > 02:0a:4c:e0:22:54, ethertype IPv4 (0x0800), length 98: 142.250.203.206 > 192.168.2.101: ICMP echo reply, id 21, seq 0, length 64
+07:37:21.114322 0e:b7:a7:77:c5:f0 > 56:54:82:7b:06:ca, ethertype IPv4 (0x0800), length 70: 192.168.2.101.48075 > 1.1.1.1.53: 29720+ A? google.com. (28)
+07:37:21.121522 56:54:82:7b:06:ca > 0e:b7:a7:77:c5:f0, ethertype IPv4 (0x0800), length 86: 1.1.1.1.53 > 192.168.2.101.48075: 29720 1/0/0 A 142.250.203.142 (44)
+07:37:21.121994 0e:b7:a7:77:c5:f0 > 56:54:82:7b:06:ca, ethertype IPv4 (0x0800), length 98: 192.168.2.101 > 142.250.203.142: ICMP echo request, id 9, seq 0, length 64
+07:37:21.151346 56:54:82:7b:06:ca > 0e:b7:a7:77:c5:f0, ethertype IPv4 (0x0800), length 98: 142.250.203.142 > 192.168.2.101: ICMP echo reply, id 9, seq 0, length 64
 ```
 
 #### tcpdump on `router6`:
@@ -247,10 +247,10 @@ listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 docker exec -it router6 tcpdump -i eth1 -n -e -s 0
 tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
 listening on eth1, link-type EN10MB (Ethernet), snapshot length 262144 bytes
-07:24:45.844408 fa:9a:6c:a4:4a:4d > 5e:43:fc:c6:27:2b, ethertype IPv4 (0x0800), length 70: 192.168.3.10.41250 > 1.1.1.1.53: 28344+ A? google.com. (28)
-07:24:45.851558 5e:43:fc:c6:27:2b > fa:9a:6c:a4:4a:4d, ethertype IPv4 (0x0800), length 86: 1.1.1.1.53 > 192.168.3.10.41250: 28344 1/0/0 A 142.250.186.206 (44)
-07:24:45.852095 fa:9a:6c:a4:4a:4d > 5e:43:fc:c6:27:2b, ethertype IPv4 (0x0800), length 98: 192.168.3.10 > 142.250.186.206: ICMP echo request, id 21, seq 0, length 64
-07:24:45.877133 5e:43:fc:c6:27:2b > fa:9a:6c:a4:4a:4d, ethertype IPv4 (0x0800), length 98: 142.250.186.206 > 192.168.3.10: ICMP echo reply, id 21, seq 0, length 64
+07:37:21.114362 2e:da:ec:9c:91:f9 > 6e:14:78:cc:75:3d, ethertype IPv4 (0x0800), length 70: 192.168.4.11.48075 > 1.1.1.1.53: 29720+ A? google.com. (28)
+07:37:21.121507 6e:14:78:cc:75:3d > 2e:da:ec:9c:91:f9, ethertype IPv4 (0x0800), length 86: 1.1.1.1.53 > 192.168.4.11.48075: 29720 1/0/0 A 142.250.203.142 (44)
+07:37:21.122021 2e:da:ec:9c:91:f9 > 6e:14:78:cc:75:3d, ethertype IPv4 (0x0800), length 98: 192.168.4.11 > 142.250.203.142: ICMP echo request, id 9, seq 0, length 64
+07:37:21.151327 6e:14:78:cc:75:3d > 2e:da:ec:9c:91:f9, ethertype IPv4 (0x0800), length 98: 142.250.203.142 > 192.168.4.11: ICMP echo reply, id 9, seq 0, length 64
 ```
 
 #### tcpdump on `router5`:
@@ -259,11 +259,10 @@ listening on eth1, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 docker exec -it router5 tcpdump -i eth1 -n -e -s 0
 tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
 listening on eth1, link-type EN10MB (Ethernet), snapshot length 262144 bytes
-07:24:11.960072 7a:bb:aa:04:f1:5e > 22:18:87:10:82:ec, ethertype IPv4 (0x0800), length 70: 192.168.5.2.35928 > 1.1.1.1.53: 28232+ A? google.com. (28)
-07:24:11.967514 22:18:87:10:82:ec > 7a:bb:aa:04:f1:5e, ethertype IPv4 (0x0800), length 86: 1.1.1.1.53 > 192.168.5.2.35928: 28232 1/0/0 A 142.250.203.206 (44)
-07:24:11.967940 7a:bb:aa:04:f1:5e > 22:18:87:10:82:ec, ethertype IPv4 (0x0800), length 98: 192.168.5.2 > 142.250.203.206: ICMP echo request, id 21, seq 0, length 64
-07:24:11.993011 22:18:87:10:82:ec > 7a:bb:aa:04:f1:5e, ethertype IPv4 (0x0800), length 98: 142.250.203.206 > 192.168.5.2: ICMP echo reply, id 21, seq 0, length 64
+07:37:21.114382 de:05:78:68:bd:76 > e2:0b:c8:70:a9:b4, ethertype IPv4 (0x0800), length 70: 192.168.5.2.48075 > 1.1.1.1.53: 29720+ A? google.com. (28)
+07:37:21.121495 e2:0b:c8:70:a9:b4 > de:05:78:68:bd:76, ethertype IPv4 (0x0800), length 86: 1.1.1.1.53 > 192.168.5.2.48075: 29720 1/0/0 A 142.250.203.142 (44)
+07:37:21.122030 de:05:78:68:bd:76 > e2:0b:c8:70:a9:b4, ethertype IPv4 (0x0800), length 98: 192.168.5.2 > 142.250.203.142: ICMP echo request, id 9, seq 0, length 64
+07:37:21.151312 e2:0b:c8:70:a9:b4 > de:05:78:68:bd:76, ethertype IPv4 (0x0800), length 98: 142.250.203.142 > 192.168.5.2: ICMP echo reply, id 9, seq 0, length 64
 ```
 
-As we can clearly see, the masquarade routing is working and the packets are being in the correct order.
-
+As we can clearly see, the masquarade routing is working and the packets are being in the correct order, which can be seen by the timestamps.

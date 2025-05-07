@@ -11,14 +11,14 @@
   - [Task 1](#task-1)
     - [Task 1.1](#task-11)
     - [Task 1.2](#task-12)
-  - [Task 1.3](#task-13)
-  - [Task 1.4](#task-14)
-  - [Task 1.5](#task-15)
+    - [Task 1.3](#task-13)
+    - [Task 1.4](#task-14)
+    - [Task 1.5](#task-15)
   - [Task 2](#task-2)
   - [Task 3](#task-3)
-    - [tcpdump on `router2`:](#tcpdump-on-router2)
-    - [tcpdump on `router6`:](#tcpdump-on-router6)
-    - [tcpdump on `router5`:](#tcpdump-on-router5)
+    - [tcpdump on `router2`](#tcpdump-on-router2)
+    - [tcpdump on `router6`](#tcpdump-on-router6)
+    - [tcpdump on `router5`](#tcpdump-on-router5)
 
 ## Description
 
@@ -63,7 +63,7 @@ PC3 has been assigned:
 Docker provides a bridge network (virtual switch) for each container. I have created a custom bridge network for each subnet,
 ensuring only `net5` has access to the internet. The other networks are isolated, and must route through `net5` to reach the internet.
 
-For example, in order to reach google.com from `pc3` it must first route through `router2`, `router6` and `router5` to eventuall reach the internet.
+For example, in order to reach google.com from `pc3` it must first route through `router2`, `router6` and `router5` to eventually reach the internet.
 We can see this simply by running traceroute from `pc3` to `google.com`:
 
 ```bash
@@ -168,11 +168,11 @@ docker exec -it router5 ip a
 
 As we can see `eth1` on `router5` has been assigned the dynamic IP address `192.168.5.2` (first available IP address in the subnet).
 
-### Task 1.3
+#### Task 1.3
 
 All other devices have statically assigned IP addresses.
 
-### Task 1.4
+#### Task 1.4
 
 All devices can ping each other, and the routers can route between the different networks. For example, we can ping `pc1` from `pc3`:
 
@@ -183,7 +183,7 @@ PING 192.168.1.100 (192.168.1.100): 56 data bytes
 64 bytes from 192.168.1.100: icmp_seq=1 ttl=62 time=0.146 ms
 ```
 
-### Task 1.5
+#### Task 1.5
 
 All devices can ping the internet, and the routers can route between the different networks. For example, we can ping `google.com` from `router3`:
 
@@ -229,7 +229,7 @@ round-trip min/avg/max/stddev = 25.165/25.165/25.165/0.000 ms
 
 Let's now examine the outputs of the 3 `tcpdump` commands we started earlier.
 
-#### tcpdump on `router2`:
+#### tcpdump on `router2`
 
 ```bash
 docker exec -it router2 tcpdump -i eth0 -n -e -s 0
@@ -241,7 +241,7 @@ listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 07:37:21.151346 56:54:82:7b:06:ca > 0e:b7:a7:77:c5:f0, ethertype IPv4 (0x0800), length 98: 142.250.203.142 > 192.168.2.101: ICMP echo reply, id 9, seq 0, length 64
 ```
 
-#### tcpdump on `router6`:
+#### tcpdump on `router6`
 
 ```bash
 docker exec -it router6 tcpdump -i eth1 -n -e -s 0
@@ -253,7 +253,7 @@ listening on eth1, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 07:37:21.151327 6e:14:78:cc:75:3d > 2e:da:ec:9c:91:f9, ethertype IPv4 (0x0800), length 98: 142.250.203.142 > 192.168.4.11: ICMP echo reply, id 9, seq 0, length 64
 ```
 
-#### tcpdump on `router5`:
+#### tcpdump on `router5`
 
 ```bash
 docker exec -it router5 tcpdump -i eth1 -n -e -s 0
